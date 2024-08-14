@@ -12,11 +12,6 @@ pub use contexts::*;
 pub mod escrow_program {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
-    }
-
     pub fn make(ctx: Context<Make>, seed: u64, receive: u64, deposit: u64) -> Result<()> {
         ctx.accounts.deposit(deposit)?;
         ctx.accounts.save_escrow(seed, receive, &ctx.bumps)
@@ -31,6 +26,3 @@ pub mod escrow_program {
         ctx.accounts.refund_and_close_vault()
     }
 }
-
-#[derive(Accounts)]
-pub struct Initialize {}
