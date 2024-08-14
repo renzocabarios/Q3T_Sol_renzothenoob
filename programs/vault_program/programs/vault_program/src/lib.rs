@@ -129,7 +129,7 @@ pub struct Close<'info> {
     #[account(
         mut,
         seeds = [b"vault", state.key().as_ref()],
-        bump = state.vault_bump
+        bump = state.vault_bumps
     )]
     pub vault: SystemAccount<'info>,
     pub system_program: Program<'info, System>,
